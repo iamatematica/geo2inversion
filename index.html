@@ -822,6 +822,23 @@ function bgGrid(ctx,W,H){
     // Diameter label
     ctx.fillStyle='rgba(248,113,113,.65)';ctx.font='11px Nunito,sans-serif';ctx.setLineDash([]);
     ctx.fillText('diám = OA\'',cc.x-28,cc.y+cr+15);
+    // T. de Thales note styled as a beautiful elegant badge in the bottom-left corner
+    ctx.save();
+    ctx.fillStyle = 'rgba(167, 139, 250, 0.08)';
+    ctx.strokeStyle = 'rgba(167, 139, 250, 0.25)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    if (ctx.roundRect) {
+      ctx.roundRect(15, H - 35, 295, 24, 6);
+    } else {
+      ctx.rect(15, H - 35, 295, 24);
+    }
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle = '#a78bfa';
+    ctx.font = '500 11px Nunito, sans-serif';
+    ctx.fillText('⚡ Justificado por T. de Thales (∠OP\'A\' = 90°)', 24, H - 19);
+    ctx.restore();
     // P and P'
     const PL=Pon(),Pp=inv(O,PL,r);
     if(Pp){
