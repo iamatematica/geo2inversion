@@ -6,7 +6,7 @@ import {defineConfig} from 'vite';
 export default defineConfig(() => {
   return {
     plugins: [react(), tailwindcss()],
-    base: '/geo2invertsion/',
+    base: '/geo2inversion/',
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
