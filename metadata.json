@@ -1,0 +1,6 @@
+{
+  "name": "Inversión Geométrica",
+  "description": "Material didáctico interactivo sobre la Inversión Geométrica en el plano",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
