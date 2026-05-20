@@ -348,10 +348,10 @@
         <ul class="slist" id="slist">
           <li class="si" id="si0"><span class="sn">0</span><span><strong>Datos:</strong> Círculo C(O,r) y punto P exterior dados.</span></li>
           <li class="si" id="si1"><span class="sn">1</span><span><strong>Trazamos OP.</strong> Recta que une el centro con P.</span></li>
-          <li class="si" id="si2"><span class="sn">2</span><span><strong>Tangente desde P a C.</strong> Elegimos uno de los dos puntos de tangencia T.</span></li>
-          <li class="si" id="si3"><span class="sn">3</span><span><strong>T = punto de tangencia.</strong> Por construcción, OT ⊥ PT (ángulo recto).</span></li>
+          <li class="si" id="si2"><span class="sn">2</span><span><strong>Tangente y Radio OT.</strong> Tangente desde P al círculo C en T, y trazamos el radio OT.</span></li>
+          <li class="si" id="si3"><span class="sn">3</span><span><strong>OT ⊥ PT.</strong> Por propiedad de la tangente, se forma un ángulo recto en T.</span></li>
           <li class="si" id="si4"><span class="sn">4</span><span><strong>p: perpendicular a OP por T.</strong></span></li>
-          <li class="si" id="si5"><span class="sn">5</span><span><strong>{P&prime;} = OP ∩ p.</strong> ¡P&prime; es el inverso de P!</span></li>
+          <li class="si" id="si5"><span class="sn">5</span><span><strong>{P&prime;} = OP ∩ p y tramo P&prime;T.</strong> ¡Unimos P&prime; con T para completar el triángulo semejante △OP&prime;T!</span></li>
         </ul>
 
         <div class="coll" id="col-proof">
@@ -375,7 +375,9 @@
           <div class="coll-h" onclick="tc('col-int')"><h4>❓ ¿Y si P es interior al círculo?</h4><span class="coll-ic">▼</span></div>
           <div class="coll-b"><div class="coll-in">
             <p style="margin-bottom:.65rem">Si P es <strong>interior</strong>, no es posible trazar tangentes desde P a C. En ese caso se invierte el procedimiento:</p>
-            <p style="margin-bottom:.65rem">Como la inversión es <strong>involutiva</strong>, i<sub>C</sub>(P) = P&prime; ⟺ i<sub>C</sub>(P&prime;) = P. Por lo tanto, podemos elegir un punto Q exterior en la semirrecta OP⃗ tal que P sea su inverso, y luego construir P&prime; = Q⃗.</p>
+            <p style="margin-bottom:.65rem">Como la inversión es <strong>involutiva</strong>, i<sub>C</sub>(P) = P&prime; ⟺ i<sub>C</sub>(P&prime;) = P. Para construir el inverso P&prime; de un punto P interior:</p>
+            <p style="margin-bottom:.65rem">1. Trazamos la perpendicular a OP por P, que interseca a la circunferencia en un punto T.</p>
+            <p style="margin-bottom:.65rem">2. Trazamos la tangente a la circunferencia por T. El punto de intersección de esta tangente con la semirrecta OP es, precisamente, el inverso P&prime;.</p>
             <p>En la práctica, se determina P&prime; como el punto de OP tal que OP &middot; OP&prime; = r², invirtiendo la fórmula.</p>
           </div></div>
         </div>
@@ -713,10 +715,10 @@ function bgGrid(ctx,W,H){
   const descs=[
     {t:'Datos iniciales',p:'Tenemos el círculo C(O,r) y el punto P exterior al círculo.'},
     {t:'Paso 1 — Recta OP',p:'Trazamos la recta que une el centro O con P. El inverso P\' estará en esta recta.'},
-    {t:'Paso 2 — Tangente desde P',p:'Trazamos la tangente desde P al círculo C. T es el punto de tangencia (OT ⊥ PT).'},
-    {t:'Paso 3 — Ángulo recto en T',p:'OT ⊥ PT por propiedad de la tangente. Se marca el ángulo recto en T.'},
+    {t:'Paso 2 — Tangente y Radio OT',p:'Trazamos la tangente desde P al círculo C en T, y trazamos el radio OT.'},
+    {t:'Paso 3 — Ángulo recto en T',p:'Por construcción, OT ⊥ PT (ángulo recto). Se marca en T.'},
     {t:'Paso 4 — Perpendicular p por T',p:'Trazamos la perpendicular p a la recta OP que pasa por T.'},
-    {t:'Paso 5 — P\' = OP ∩ p',p:'P\' es la intersección de la perpendicular p con la recta OP. ¡Ése es el inverso!'},
+    {t:'Paso 5 — Triángulo OP\'T',p:'P\' es la intersección de p con OP. Unimos P\' con T completando el triángulo △OP\'T, semejante a △OTP.'},
   ];
   function getTangent(){
     const M={x:(O.x+P.x)/2,y:(O.y+P.y)/2},Rm=d(O,P)/2,ds=d(O,M);
@@ -744,7 +746,11 @@ function bgGrid(ctx,W,H){
     }
     if(step>=2){
       ctx.save();ctx.globalAlpha=.85;ctx.strokeStyle='#a78bfa';ctx.lineWidth=2;ctx.setLineDash([]);
-      ctx.beginPath();ctx.moveTo(P.x,P.y);ctx.lineTo(T.x,T.y);ctx.stroke();ctx.restore();
+      ctx.beginPath();ctx.moveTo(P.x,P.y);ctx.lineTo(T.x,T.y);ctx.stroke();
+      // Draw the missing side OT to fully define the triangles
+      ctx.strokeStyle='rgba(167,139,250,.85)';
+      ctx.beginPath();ctx.moveTo(O.x,O.y);ctx.lineTo(T.x,T.y);ctx.stroke();
+      ctx.restore();
     }
     if(step>=3){
       dot(ctx,T.x,T.y,8,'#a78bfa','T');
@@ -767,6 +773,17 @@ function bgGrid(ctx,W,H){
       ctx.fillText(`OP·OP' ≈ ${ver}`,O.x-80,H-22);
       ctx.fillStyle='rgba(52,211,153,.5)';ctx.font='11px Nunito,sans-serif';
       ctx.fillText(`r² = ${r2}`,O.x-80,H-7);
+
+      // Draw P'T (green) to complete the triangle OP'T as the last final step
+      ctx.save();
+      ctx.strokeStyle='#34d399';
+      ctx.lineWidth=2;
+      ctx.setLineDash([]);
+      ctx.beginPath();
+      ctx.moveTo(Pp.x,Pp.y);
+      ctx.lineTo(T.x,T.y);
+      ctx.stroke();
+      ctx.restore();
     }
     document.getElementById('sd').innerHTML=`<div class="stitle">${descs[step].t}</div><p>${descs[step].p}</p>`;
     document.getElementById('sind').textContent=`Paso ${step} / 5`;
@@ -790,10 +807,10 @@ function bgGrid(ctx,W,H){
   function gp(e){return getPos(cv,e,W,H);}
   function Pon(){return{x:lineX,y:O.y+paramT};}
   cv.addEventListener('mousedown',e=>{if(d(gp(e),Pon())<14)drag=true;});
-  cv.addEventListener('mousemove',e=>{if(!drag)return;const p=gp(e);paramT=Math.max(-165,Math.min(165,p.y-O.y));draw();});
+  cv.addEventListener('mousemove',e=>{if(!drag)return;const p=gp(e);paramT=Math.max(-213,Math.min(167,p.y-O.y));draw();});
   cv.addEventListener('mouseup',()=>drag=false);
   cv.addEventListener('touchstart',e=>{e.preventDefault();if(d(gp(e),Pon())<20)drag=true;},{passive:false});
-  cv.addEventListener('touchmove',e=>{e.preventDefault();if(!drag)return;const p=gp(e);paramT=Math.max(-165,Math.min(165,p.y-O.y));draw();},{passive:false});
+  cv.addEventListener('touchmove',e=>{e.preventDefault();if(!drag)return;const p=gp(e);paramT=Math.max(-213,Math.min(167,p.y-O.y));draw();},{passive:false});
   cv.addEventListener('touchend',()=>drag=false);
   function draw(){
     bgGrid(ctx,W,H);
