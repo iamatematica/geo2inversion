@@ -546,13 +546,68 @@
         <div class="fb" id="fb5"></div>
       </div>
 
+      <div class="qq" id="q6">
+        <p class="qt"><span class="qn">6</span>¿Cuál es la imagen por inversión de una circunferencia que pasa por el centro de inversión O (distinta de la circunferencia de inversión)?</p>
+        <ul class="ol">
+          <li class="oi" onclick="sel(this,'q6',false)"><span>A</span> Una circunferencia concéntrica de radio menor.</li>
+          <li class="oi" onclick="sel(this,'q6',false)"><span>B</span> Una recta que pasa por O.</li>
+          <li class="oi" onclick="sel(this,'q6',true)"><span>C</span> Una recta que NO pasa por O.</li>
+          <li class="oi" onclick="sel(this,'q6',false)"><span>D</span> Una parábola con foco en O.</li>
+        </ul>
+        <div class="fb" id="fb6"></div>
+      </div>
+
+      <div class="qq" id="q7">
+        <p class="qt"><span class="qn">7</span>La inversión conserva el valor de los ángulos pero invierte la orientación de los mismos. Esto significa que es una transformación:</p>
+        <ul class="ol">
+          <li class="oi" onclick="sel(this,'q7',false)"><span>A</span> Isométrica directa</li>
+          <li class="oi" onclick="sel(this,'q7',true)"><span>B</span> Conforme (e inversa)</li>
+          <li class="oi" onclick="sel(this,'q7',false)"><span>C</span> Afín general</li>
+          <li class="oi" onclick="sel(this,'q7',false)"><span>D</span> Proyectiva no conforme</li>
+        </ul>
+        <div class="fb" id="fb7"></div>
+      </div>
+
+      <div class="qq" id="q8">
+        <p class="qt"><span class="qn">8</span>Para construir el inverso P&prime; de un punto P INTERIOR al círculo utilizando el método formalmente involutivo:</p>
+        <ul class="ol">
+          <li class="oi" onclick="sel(this,'q8',true)"><span>A</span> Se traza la perpendicular a OP por P para hallar T en la circunferencia, y luego la tangente en T.</li>
+          <li class="oi" onclick="sel(this,'q8',false)"><span>B</span> Se traza una tangente directa desde O.</li>
+          <li class="oi" onclick="sel(this,'q8',false)"><span>C</span> Se toma un punto P' tal que OP + OP' = 2r.</li>
+          <li class="oi" onclick="sel(this,'q8',false)"><span>D</span> Se duplica la distancia de P al círculo.</li>
+        </ul>
+        <div class="fb" id="fb8"></div>
+      </div>
+
+      <div class="qq" id="q9">
+        <p class="qt"><span class="qn">9</span>¿Qué sucede con el punto inverso P&prime; si el punto original P se aproxima infinitamente al centro O (P → O, P ≠ O)?</p>
+        <ul class="ol">
+          <li class="oi" onclick="sel(this,'q9',false)"><span>A</span> P&prime; se aproxima también a O.</li>
+          <li class="oi" onclick="sel(this,'q9',false)"><span>B</span> P&prime; se estabiliza en un punto de la circunferencia.</li>
+          <li class="oi" onclick="sel(this,'q9',true)"><span>C</span> P&prime; se aleja hacia el infinito sobre la semirrecta OP.</li>
+          <li class="oi" onclick="sel(this,'q9',false)"><span>D</span> El inverso deja de estar definido geométricamente.</li>
+        </ul>
+        <div class="fb" id="fb9"></div>
+      </div>
+
+      <div class="qq" id="q10">
+        <p class="qt"><span class="qn">10</span>Si invertimos una circunferencia que NO pasa por el centro de inversión O, su figura imagen es:</p>
+        <ul class="ol">
+          <li class="oi" onclick="sel(this,'q10',true)"><span>A</span> Otra circunferencia que tampoco pasa por O.</li>
+          <li class="oi" onclick="sel(this,'q10',false)"><span>B</span> Una recta que no pasa por O.</li>
+          <li class="oi" onclick="sel(this,'q10',false)"><span>C</span> Una recta que pasa por O.</li>
+          <li class="oi" onclick="sel(this,'q10',false)"><span>D</span> El mismo círculo original idéntico siempre.</li>
+        </ul>
+        <div class="fb" id="fb10"></div>
+      </div>
+
       <div style="text-align:center;margin-top:1.75rem">
         <button class="btn btn-p" id="bcheck" onclick="checkQ()" style="font-size:.97rem;padding:.7rem 2rem">Verificar respuestas ✓</button>
       </div>
     </div>
 
     <div class="qs-wrap" id="qs">
-      <div class="sco" id="scn">0/5</div>
+      <div class="sco" id="scn">0/10</div>
       <p style="font-size:1.05rem;color:var(--muted);margin-top:.5rem" id="scm">—</p>
       <button class="btn btn-g" onclick="resetQ()" style="margin-top:1.4rem">↺ Intentar de nuevo</button>
     </div>
@@ -891,6 +946,11 @@ const msgs={
   q3:{ok:'¡Perfecto! La inversa de r es la circunferencia de diámetro OA\'.',bad:'Por el Teorema de Tales, ∠OP\'A\'=90° → P\' describe una circunferencia de diámetro OA\'.'},
   q4:{ok:'¡Correcto! Si P ∈ C: OP=r, OP\'=r²/r=r, así que P\'=P.',bad:'Si P ∈ C, OP=r, entonces OP\'=r²/OP=r, por lo que P\' coincide con P.'},
   q5:{ok:'¡Exacto! △OTP ~ △OTP\' por ángulo común en O y ángulos rectos en T y P\'.',bad:'La semejanza es entre △OTP y △OTP\': comparten ∠O y tienen ángulos rectos en T y en P\'.'},
+  q6:{ok:'¡Correcto! La inversa de una circunferencia que pasa por el polo O es una recta que no pasa por O.',bad:'Una circunferencia que pasa por O se invierte en una recta que no pasa por O.'},
+  q7:{ok:'¡Exacto! La inversión de figuras es conforme (preserva los ángulos en magnitud) pero es inversa al cambiar el sentido u orientación.',bad:'La transformación es conforme e inversa porque preserva la amplitud de los ángulos pero invierte el sentido de rotación.'},
+  q8:{ok:'¡Correcto! De forma involutiva, se traza primero el segmento perpendicular en P a la recta radial para ubicar T, luego la tangente en T para hallar el corte con OP.',bad:'Se traza la perpendicular por P para hallar T en la circunferencia, y luego la tangente en T.'},
+  q9:{ok:'¡Exacto! Dado que OP\' = r²/OP, si OP se aproxima a 0, la distancia del inverso OP\' crece sin límites.',bad:'A medida que P se acerca a O, el recíproco de la distancia se hace infinitamente grande, por lo que P\' se aleja al infinito.'},
+  q10:{ok:'¡Perfecto! Una circunferencia que no pasa por O se invierte en otra circunferencia que tampoco pasa por O.',bad:'Al no pasar por el origen O, la figura resultante sigue siendo una circunferencia (que tampoco pasa por O).'},
 };
 function sel(el,qid,ok){
   const q=document.getElementById(qid);
@@ -901,7 +961,7 @@ function sel(el,qid,ok){
 }
 function checkQ(){
   let score=0;
-  ['q1','q2','q3','q4','q5'].forEach(qid=>{
+  ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'].forEach(qid=>{
     const q=document.getElementById(qid),ans=qa[qid],fb=document.getElementById('fb'+qid.slice(1));
     q.querySelectorAll('.oi').forEach(i=>i.classList.add('dis'));
     if(ans&&ans.ok){score++;ans.el.classList.add('ca');q.classList.add('ok');fb.innerHTML=`<span style="color:var(--green)">✓ ${msgs[qid].ok}</span>`;fb.classList.add('show');}
@@ -914,13 +974,25 @@ function checkQ(){
   });
   document.getElementById('bcheck').style.display='none';
   const sw=document.getElementById('qs');sw.classList.add('show');
-  const sn=document.getElementById('scn');sn.textContent=`${score}/5`;
-  sn.className='sco '+(score>=4?'hi':score>=3?'mid':'lo');
-  const msgs2=['Repasá desde el Módulo 2.','Revisá los conceptos de construcción.','Bien, pero hay algunos puntos por pulir.','Muy bien, dominás los conceptos centrales.','¡Excelente! Dominio sólido del tema.','¡Impecable! Perfecto.'];
+  const sn=document.getElementById('scn');sn.textContent=`${score}/10`;
+  sn.className='sco '+(score>=8?'hi':score>=5?'mid':'lo');
+  const msgs2=[
+    'Repasá los conceptos de inversión en los Módulos 1 al 5.',
+    'Necesitás repasar las bases de la inversión geométrica.',
+    'Volvé a leer con atención los pasos de la construcción interactiva.',
+    'Algunos puntos están claros, pero falta afianzar la teoría.',
+    'Vas por buen camino. Te sugerimos revisar las figuras y sus imágenes.',
+    '¡Aprobado! Buen conocimiento básico de los teoremas de inversión.',
+    '¡Bien hecho! Demostrás buena comprensión conceptual general.',
+    '¡Muy bien! Dominás la mayor parte de las propiedades de inversión.',
+    '¡Excelente puntaje! Demostrás un dominio teórico muy sólido.',
+    '¡Sobresaliente! Prácticamente todos los conceptos entendidos.',
+    '¡Impecable! Rendimiento ideal y dominio absoluto de la inversión geométrica.'
+  ];
   document.getElementById('scm').textContent=msgs2[score]||'';
 }
 function resetQ(){
-  ['q1','q2','q3','q4','q5'].forEach(qid=>{
+  ['q1','q2','q3','q4','q5','q6','q7','q8','q9','q10'].forEach(qid=>{
     const q=document.getElementById(qid),fb=document.getElementById('fb'+qid.slice(1));
     q.classList.remove('ok','bad');
     q.querySelectorAll('.oi').forEach(i=>i.classList.remove('sel','ca','wa','dis'));
